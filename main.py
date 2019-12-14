@@ -24,10 +24,10 @@ def find_getch():
         return getch
 class Realtime_CMD:
     word_list = []
-    target_list = ['am','are','have','is']
+    target_list = ['am','are','have','is','i','We','They','The','It','How']
     def __init__(self):
-        word_list = ['i','We','They','The','It','How']
-        target_list = ['am','are','have','is']
+        word_list = ['am','are','have','is','i','We','They','The','It','How']
+        target_list = ['am','are','have','is','i','We','They','The','It','How']
         #self.cmd()
     
     def cmd(self):
@@ -37,7 +37,7 @@ class Realtime_CMD:
         getch = find_getch()
         count = 0
         length = 0
-        word_list = ['i','We','They','The','It','How']
+        word_list = ['am','are','have','is','i','We','They','The','It','How']
         while ch not in '\r\n':
             
             ch2 = getch()
@@ -74,7 +74,7 @@ class Realtime_CMD:
             #print(sentence)
         #return sentence    
     def suggestions(self,count):
-        list_of_words = ['am','are','have','is']
+        list_of_words = ['am','are','have','is','i','We','They','The','It','How']
         if self.target_list==None:
             words = list_of_words
         else:
