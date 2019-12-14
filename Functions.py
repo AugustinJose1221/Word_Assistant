@@ -11,11 +11,12 @@ def Word_List(sentence):
     word_list = [w.translate(string_map) for w in words]
     return word_list
 def Suggestions(sequence):
-    words = []
+    words = [" "]
     for i in sequence:
         words.append(i[0])
     return words
         
+
 
 
 
