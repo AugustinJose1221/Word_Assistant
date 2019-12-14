@@ -10,6 +10,13 @@ def Word_List(sentence):
     string_map = str.maketrans('', '', string.punctuation)
     word_list = [w.translate(string_map) for w in words]
     return word_list
+def Suggestions(sequence):
+    words = []
+    for i in sequence:
+        words.append(i[0])
+    return words
+        
+
 
 
 
