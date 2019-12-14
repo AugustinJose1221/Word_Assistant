@@ -1,6 +1,6 @@
 import sys
 import getpass
-
+from Functions import Target_Word, Word_List 
 def _find_getch():
     try:
         import termios
@@ -29,8 +29,10 @@ def cmd():
     count = 0
     length = 0
     while ch not in '\r\n':
+        
+        ch2 = getch()
+        ch1 = ch2.decode('utf-8')
         count = count+1
-        ch2 = getch()#.decode()
         ch = str(ch2)
         if count>=5:
             count=0
@@ -38,26 +40,28 @@ def cmd():
             for i in range(length):
                 sys.stdout.write('\b \b')
                 sys.stdout.flush()
-            
+                sentence = sentence[:(len(sentence)-1)]
             sugg, length = suggestions(count)
             sys.stdout.write(str(sugg))
             sys.stdout.flush()
+            sentence+=sugg
             continue
         if ch==str(b' '):
             count = 0
             sugg, length = suggestions(0)
             sys.stdout.write(str(sugg))
+            length = 0
             sys.stdout.flush()
+            sentence+=" "
             continue
-        sentence += sugg
         if ch==str(b'.'):
             break
-        ch1 = ch2.decode('utf-8')
-        sentence += ch1
         sys.stdout.write(str(ch1))
         sys.stdout.flush()
+        sentence+=str(ch1)
     return sentence
 def suggestions(count):
-    words = [' ',' work ',' job ',' career ',' profession ']
-    return words[count],len(words[count])
-cmd()
+    words = ['','work','job','career','profession']
+    return " "+words[count],len(words[count])+1
+sequence = cmd()
+word_list = Word_List(sequence)
